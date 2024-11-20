@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <!-- Champ pour le solde -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Solde">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSolde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Choix du type de compte -->
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radioCourant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Courant" />
+        <RadioButton
+            android:id="@+id/radioEpargne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Épargne" />
+    </RadioGroup>
+</LinearLayout>

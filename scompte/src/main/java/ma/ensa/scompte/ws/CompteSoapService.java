@@ -36,7 +36,26 @@ public class CompteSoapService {
         Compte compte = new Compte(null, solde, new Date(), type);
         return compteRepository.save(compte);
     }
+    @WebMethod
+    public Compte updateCompte(@WebParam(name = "id") Long id,
+                               @WebParam(name = "solde") double solde,
+                               @WebParam(name = "type") TypeCompte type) {
+        // Vérifie si le compte existe déjà
+        Compte compte = compteRepository.findById(id).orElse(null);
 
+        if (compte != null) {
+            // Si le compte existe, mets à jour ses informations
+            compte.setSolde(solde);
+            compte.setType(type);
+            // Met à jour la date si nécessaire (par exemple, la dernière mise à jour)
+            compte.setDateCreation(new Date());  // Optionnel, ou remplace par un autre champ de date si tu en as un pour la mise à jour
+
+            // Sauvegarde le compte mis à jour
+            return compteRepository.save(compte);
+        }
+        // Si le compte n'existe pas, retourne null ou tu peux lever une exception
+        return null;
+    }
     @WebMethod
     public boolean deleteCompte(@WebParam(name = "id") Long id) {
         if (compteRepository.existsById(id)) {
